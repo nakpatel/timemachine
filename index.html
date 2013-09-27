@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>Blasts From The Past</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+    </head>
+    <body>
+    		<div class="container">
+    			<h1><img src="img/logo.png"/></h1>
+                <h3> Go 100 Years Back In An Insta-Time Machine</h3>
+                <img src="img/loadingclock.gif"/>
+    <!--Year Selection Form-->
+                <div id="yearSelection">
+                    <span id="year-text">Take Me Back To The Year</span> <input type="text" id="year" name="year" maxlength="4" readonly="" />
+    <!--Year Selection Slider-->
+                    <div id="yearSlider"></div>
+                    <span id="directions">Click and Drag The Delorean To Start Your Time Travel</span>
+                </div>
+    <!--Year Selection Slider-->
+                        <ul id="feed"></ul>
+                <div class='paginate'>
+                    <span class='view-more' href='#'>Load More...</span>
+                </div>
+            </div>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+            <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+            <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+            <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+            <script src="js/application.js"></script>
+    </body>
+</html>
