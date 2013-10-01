@@ -7,12 +7,11 @@ $(document).ready(function(){
         };
         $('#year').val("2013"); 
 
-
+        var min =""
 //Function To Pull Data & Display Photos From Instagram
         function loadInstagram(year) {
              console.log(year);
             //Get Data From Instagram
-            var min =""
              $.ajax({
                 type: "GET",
                 url: instagram.apiHost + "/v1/tags/" + year + "/media/recent",
@@ -21,7 +20,8 @@ $(document).ready(function(){
             //Display Photos    
               }).done(function(photos){
                 console.log(photos);
-                $('#feed').html("");
+              if(!loadMore)
+                    $('#feed').html("");
                 for(i=0;i<photos.data.length;i++){
             //Vars that hold api data
                     var img = photos.data[i].images.low_resolution.url;
@@ -49,7 +49,8 @@ $(document).ready(function(){
                 },
                 stop: function( event, ui ) {
                 input.val( ui.value );
-                var year =$('#yearSlider').slider("value");     
+                var year =$('#yearSlider').slider("value");
+                    loadMore=false;     
                 loadInstagram(year);
                 }
           })
@@ -58,7 +59,12 @@ $(document).ready(function(){
         $(function() {
                         createSlider($( "#yearSlider" ), $( "#year" ));
                     });
-
+        
+$('.view-more').click(function(){
+  loadMore=true;
+  year =$('#yearSlider').slider("value"); 
+  loadInstagram(year);
+});
 
 });
 
