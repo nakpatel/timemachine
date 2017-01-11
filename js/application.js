@@ -3,21 +3,25 @@ $(document).ready(function(){
 //Connect to Instagram and set base year as 2013
         instagram = {
             clientID: '6bcadf7016694ec7a8da9139c7918c8a',
-            apiHost: 'https://api.instagram.com'
+            apiHost: 'https://api.instagram.com',
+            accessToken: '198593368.6bcadf7.052f0401cf9a4baa9752ace8bc6eb50d'
         };
-        $('#year').val("2013"); 
+        $('#year').val("2017");
 
         var min =""
 //Function To Pull Data & Display Photos From Instagram
         function loadInstagram(year) {
              console.log(year);
+             console.log(instagram.apiHost + "/v1/tags/" + year + "/media/recent");
             //Get Data From Instagram
              $.ajax({
                 type: "GET",
                 url: instagram.apiHost + "/v1/tags/" + year + "/media/recent",
-                data: {'client_id': instagram.clientID, 'max_tag_id': min},
+                // https://api.instagram.com/v1/tags/{tag-name}/media/recent?access_token=ACCESS-TOKEN
+                // https://api.instagram.com/v1/tags/1978/media/recent
+                data: {'access_token': instagram.accessToken, 'scope': 'public_content', 'max_tag_id': min},
                 dataType: "jsonp"
-            //Display Photos    
+            //Display Photos
               }).done(function(photos){
                 console.log(photos);
               if(!loadMore)
@@ -50,7 +54,7 @@ $(document).ready(function(){
                 stop: function( event, ui ) {
                 input.val( ui.value );
                 var year =$('#yearSlider').slider("value");
-                    loadMore=false;     
+                    loadMore=false;
                 loadInstagram(year);
                 }
           })
@@ -59,10 +63,10 @@ $(document).ready(function(){
         $(function() {
                         createSlider($( "#yearSlider" ), $( "#year" ));
                     });
-        
+
 $('.view-more').click(function(){
   loadMore=true;
-  year =$('#yearSlider').slider("value"); 
+  year =$('#yearSlider').slider("value");
   loadInstagram(year);
 });
 
